@@ -32,8 +32,32 @@ Analyse :
 >Les valeurs ont changés, ainsi, ajouté ces facteurs changent effectivement les résultats de l'analyse.
 
 ## Comp
-Les EW et les CW sont des portefeuilles pondérés par la capitalisation boursière.
+Les EW et les CW ou VW sont des portefeuilles pondérés par la capitalisation boursière.
 - EW : Equal Weighted, chaque action a le même poids
-- CW : Capital Weighted, chaque action a un poids proportionnel à sa capitalisation boursière (Ex: S&P 500)
+- CW ou VW : Capital Weighted, chaque action a un poids proportionnel à sa capitalisation boursière (Ex: S&P 500)
 
-Analyse :
+## Backtest
+- Series() est une classe de pandas qui permet de manipuler des séries temporelles
+
+## Black
+Le modèle de Black-Litterman est une extension du modèle d'optimisation de portefeuille de Markowitz. Il combine deux sources d'information :
+- les redements implicites du marché (les rendements que le "marché" attend pour chaque actif) (issu de Markowitz)
+- les vues de l'investisseur
+
+Pour calculer les rendements implicites (pi) à partir des poids de marché (w),
+on utilise _The Master Formula_ :
+$$\pi = \delta \Sigma w$$, avec :
+- $\pi$ : rendements implicites vectoriels
+- $\delta$ : aversion au risque de l'invesstisseur
+- $\Sigma$ : matrice de variance-covariance des rendements
+- $w$ : vecteur des poids d'équilibre du marché ou pondérations de marché
+
+Les rendements implicites sont des rendements objectifs basé sur les poids d'équilibre du marché. Ils représentent donc une vision "neutre" des rendements futurs.
+
+- squeeze() est une méthode de pandas qui est utilisé pour réduire les dimensions d'un objet.
+- dot() est une méthode qui permet de faire le produit matriciel entre deux matrices.
+
+ÉTAPES :
+1) Calcul des rendements implicites : π=δ⋅Σ⋅wπ=δ⋅Σ⋅w.
+2) Ajustement des rendements : μ = π + τΣPT(PτΣPT + Ω)^−1 * (q−Pπ)
+3) Ajustement de la covariance : Σ = Σ + τΣ − τΣP^T(PτΣPT + Ω)^−1 * PτΣ
