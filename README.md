@@ -1,6 +1,14 @@
 # Analyses de Portefeuilles de l'EDHEC
 
-## Factor
+
+## Enveloppe Convexe dans _convex.py_
+L'objectif est d'utiliser l'algorithme de l'enveloppe convexe (Algorithme de Hull) pour visualiser la frontière efficiente d'un portefeuille d'actifs.
+La frontière représente les portefeuilles qui offrent le
+meilleur rendement attendu pour un niveau de risque donné.
+
+![Frontière efficiente](Figure_1.png)
+
+## Factor dans _factor.py_
 Analyse factorielle avec CAPM (ou MEDAF en Français) et le modèle à 3 facteurs de Fama et French,
 sur les données de rendements mensuels de Berkshire Hathaway.
 ### CAPM
@@ -31,7 +39,7 @@ Analyse :
 
 >Les valeurs ont changés, ainsi, ajouté ces facteurs changent effectivement les résultats de l'analyse.
 
-## Comp
+## Comp dans _comp.py_
 Les EW et les CW ou VW sont des portefeuilles pondérés par la capitalisation boursière.
 - EW : Equal Weighted, chaque action a le même poids
 - CW ou VW : Capital Weighted, chaque action a un poids proportionnel à sa capitalisation boursière (Ex: S&P 500)
@@ -39,7 +47,7 @@ Les EW et les CW ou VW sont des portefeuilles pondérés par la capitalisation b
 ## Backtest
 - Series() est une classe de pandas qui permet de manipuler des séries temporelles
 
-## Black
+## Optimisation de portefeuille basée sur le modèle de Black-Litterman dans _black.py_
 Le modèle de Black-Litterman est une extension du modèle d'optimisation de portefeuille de Markowitz. Il combine deux sources d'information :
 - les redements implicites du marché (les rendements que le "marché" attend pour chaque actif) (issu de Markowitz)
 - les vues de l'investisseur
@@ -59,5 +67,8 @@ Les rendements implicites sont des rendements objectifs basé sur les poids d'é
 
 ÉTAPES :
 1) Calcul des rendements implicites : π=δ⋅Σ⋅wπ=δ⋅Σ⋅w.
-2) Ajustement des rendements : μ = π + τΣPT(PτΣPT + Ω)^−1 * (q−Pπ)
-3) Ajustement de la covariance : Σ = Σ + τΣ − τΣP^T(PτΣPT + Ω)^−1 * PτΣ
+2) Ajustement des rendements : μ = π + τΣPT(PτΣPT + Ω)^-1 * (q-Pπ)
+3) Ajustement de la covariance : Σ = Σ + τΣ - τΣP^T(PτΣPT + Ω)^-1 * PτΣ
+
+## Contribution au risque et portefeuille de parité de risque dans _risk.py_
+
